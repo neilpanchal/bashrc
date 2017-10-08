@@ -10,10 +10,11 @@ reload() {
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # LS Aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias ls='ls -la -Gh --color=auto'
+# alias ll='ls -alF --color=auto'
+alias la='ls -A --color=auto'
+alias l='ls -CF --color=auto'
+alias ls='ls -lh --color=auto'
+alias ll='ls -la -Gh --color=auto'
 
 # ESP32 Aliases
 alias get_esp32='export PATH="$PATH:$HOME/esp/xtensa-esp32-elf/bin"'
@@ -37,3 +38,10 @@ make() {
     fi
 }
 
+
+kills () {
+    for session in $(screen -ls | grep -o '[0-9]\{3,\}')
+    do
+        screen -S "${session}" -X quit;
+    done
+}
