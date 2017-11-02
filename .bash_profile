@@ -63,11 +63,11 @@ kills () {
 }
 
 git() {
+
     if [[ $@ == "log" ]]; then
-    	# Use 8 processor threads for compilation
+    	# Pretty print git log
         # command git log --graph --pretty=format:'%C(cyan)%h%Creset -%C(red)%d%Creset %C(yellow)%s %Creset (%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
         command git log --graph --pretty=format:'%C(cyan)%>(16)%ad %C(reset)· %C(magenta)%h %Creset⟵   %C(yellow)%s' --date relative
-
     else
         command git "$@"
     fi
