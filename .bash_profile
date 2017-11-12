@@ -30,7 +30,13 @@ reload() {
 export EDITOR='sublime -w'
 
 #  Anaconda Path
-export PATH="/Users/controller/Applications/Anaconda/bin:$PATH"
+# export PATH="/Users/controller/Applications/Anaconda/bin:$PATH"
+# export PATH="/Users/controller/Applications/Anaconda/envs/python2/bin:$PATH"
+
+# Python
+alias env='deactivate &> /dev/null; source ./venv/bin/activate'
+alias denv='deactivate'
+
 
 # ESP32 Development
 export PATH=$PATH:$HOME/Development/esp/xtensa-esp32-elf/bin
@@ -72,3 +78,30 @@ git() {
         command git "$@"
     fi
 }
+
+# source activate python2
+unloadusb() {
+	sudo kextunload -b com.apple.driver.AppleUSBFTDI
+	sudo kextunload -b com.FTDI.driver.FTDIUSBSerialDriver
+}
+
+loadusb() {
+	sudo kextload -b com.FTDI.driver.FTDIUSBSerialDriver
+}
+
+listusb() {
+	ls /dev/tty.*
+}
+
+debug() {
+	(cd ~/Development/esp/openocd-esp32/ && bin/openocd -s share/openocd/scripts -f interface/ftdi/esp32_devkitj_v1.cfg -f board/esp-wroom-32.cfg)
+}
+
+debugger() {
+	xtensa-esp32-elf-gdb -x gdbinit build/$@.elf
+}
+
+go() {
+	cd ~/Development/esp/projects/system-voltage/system-graphics
+}
+
