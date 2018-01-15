@@ -23,24 +23,21 @@ alias ll='ls -la -Gh'
 alias x='clear'
 # Reload .bashrc file
 reload() {
+	command source deactivate
 	command source ~/.bash_profile
 }
 
 # Sublime Text Path
 export EDITOR='sublime -w'
 
-#  Anaconda Path
-# export PATH="/Users/controller/Applications/Anaconda/bin:$PATH"
-# export PATH="/Users/controller/Applications/Anaconda/envs/python2/bin:$PATH"
-
 # Python
-alias env='deactivate &> /dev/null; source ./venv/bin/activate'
-alias denv='deactivate'
+# alias env='deactivate &> /dev/null; source ./venv/bin/activate'
+# alias denv='deactivate'
 
 
 # ESP32 Development
-export PATH=$PATH:$HOME/Development/esp/xtensa-esp32-elf/bin
-export IDF_PATH=$HOME/Development/esp/esp-idf
+export PATH=$PATH:$HOME/Dev/esp/xtensa-esp32-elf/bin
+export IDF_PATH=$HOME/Dev/esp/esp-idf
 
 # This is not recommended as per: https://superuser.com/questions/105375/bash-spaces-in-alias-name
 # alias espflash='make flash -j8'
@@ -94,7 +91,7 @@ listusb() {
 }
 
 debug() {
-	(cd ~/Development/esp/openocd-esp32/ && bin/openocd -s share/openocd/scripts -f interface/ftdi/esp32_devkitj_v1.cfg -f board/esp-wroom-32.cfg)
+	(cd ~/Dev/esp/openocd-esp32/ && bin/openocd -s share/openocd/scripts -f interface/ftdi/esp32_devkitj_v1.cfg -f board/esp-wroom-32.cfg)
 }
 
 debugger() {
@@ -102,6 +99,46 @@ debugger() {
 }
 
 go() {
-	cd ~/Development/esp/projects/system-voltage/system-graphics
+	cd ~/Dropbox/Projects/Deep\ Learning/deep-learning-with-python
+}
+# Setting PATH for Python 3.6
+# The original version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
+export PATH
+
+# export PATH=/Developer/NVIDIA/CUDA-8.0/bin${PATH:+:${PATH}}
+# export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-8.0/lib\
+#                          ${DYLD_LIBRARY_PATH:+:${DYLD_LIBRARY_PATH}}
+export PATH=/Developer/NVIDIA/CUDA-9.1/bin${PATH:+:${PATH}}
+export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-9.1/lib${DYLD_LIBRARY_PATH:+:${DYLD_LIBRARY_PATH}}
+export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
+export CUDA_HOME=/usr/local/cuda
+
+editrc() {
+	sublime ~/.bash_profile
 }
 
+# added by Miniconda3 installer
+export PATH="/Users/carbon/Dev/anaconda/bin:$PATH"
+
+dl() {
+	source activate DL
+}
+
+udl() {
+	source deactivate DL
+}
+
+export GEM_HOME=~/.gem
+export GEM_PATH=~/.gem
+export PATH=$PATH:$HOME/.gem/bin
+export LD_LIBRARY_PAT=$HOME/Dev/caffe/build/lib
+
+cuda() {
+	~/Dev/deep-learning/cuda-smi-1.0/cuda-smi
+}
+export CUDA_VISIBLE_DEVICES=0
+
+tb() {
+	tensorboard --logdir=./logs & sleep 5 && open http://localhost:6006 && fg
+}
