@@ -1,0 +1,29 @@
+[legacy/profiles:/:9e9ea7b8-b6f8-4f37-8221-2578469d3650]
+foreground-color='#1a1abcbc9c9c'
+visible-name='spinzero_teriminal'
+palette=['rgb(44,62,80)', 'rgb(192,57,43)', 'rgb(207,47,183)', 'rgb(243,182,18)', 'rgb(1,140,200)', 'rgb(103,68,173)', 'rgb(22,160,133)', 'rgb(189,195,199)', 'rgb(52,73,94)', 'rgb(231,76,60)', 'rgb(204,46,145)', 'rgb(241,196,15)', 'rgb(52,152,219)', 'rgb(130,89,182)', 'rgb(42,161,152)', 'rgb(236,240,241)']
+bold-is-bright=false
+cursor-background-color='rgb(255,212,0)'
+cursor-shape='underline'
+cursor-colors-set=false
+highlight-colors-set=false
+use-system-font=false
+use-transparent-background=false
+use-theme-colors=false
+cursor-foreground-color='rgb(111,111,111)'
+font='Ubuntu Mono 12'
+use-theme-transparency=false
+use-theme-background=false
+bold-color-same-as-fg=true
+cursor-blink-mode='off'
+background-color='rgb(40,40,41)'
+audible-bell=false
+bold-color='#bdbdc3c3c7c7'
+
+[legacy/profiles:]
+list=['9e9ea7b8-b6f8-4f37-8221-2578469d3650']
+default='9e9ea7b8-b6f8-4f37-8221-2578469d3650'
+
+[legacy]
+schema-version=uint32 3
+theme-variant='system'
