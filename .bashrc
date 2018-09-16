@@ -45,12 +45,12 @@ esac
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+    # We have color support; assume it's compliant with Ecma-48
+    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+    color_prompt=yes
     else
-	color_prompt=
+    color_prompt=
     fi
 fi
 
@@ -107,7 +107,7 @@ fi
 
 
 # export PS1="\w /\[$(tput setaf 5)\]★ \[$(tput sgr0)\] "
-export PS1="\w \[$(tput setaf 6)\]➜ \[$(tput sgr0)\] "
+export PS1="\[$(tput setaf 3)\]\w \[$(tput setaf 5)\]➜ \[$(tput setaf 6)\] "
 
 # export LS_COLORS
 d=.dircolors
@@ -124,3 +124,30 @@ export IDF_PATH=~/esp/esp-idf
 # JAVA Setup
 export JAVA_HOME=/usr/lib/jvm/java-9-openjdk-amd64
 export PATH=$PATH:$JAVA_HOME/bin
+
+# Aliases
+alias ls='ls -la -Gh'
+alias x='clear'
+
+reload() {
+    command source ~/.bashrc
+}
+
+editrc() {
+    sublime ~/.bashrc
+}
+
+make() {
+    if [[ $@ == "flash" ]]; then
+        command make flash -j 20
+    elif [[ $@ == "all" ]]; then
+        command make all -j 20
+    elif [[ $@ == "clean" ]]; then
+        command make clean -j 20
+    elif [[ $@ == "install" ]]; then
+        command make install
+    else
+        # command make "$@"
+        command make "$@"
+    fi
+}
