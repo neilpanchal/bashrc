@@ -1,6 +1,5 @@
 # PATH
-export PATH=/usr/local/bin:$PATH
-export PATH=/usr/bin:$PATH
+export PATH=/bin:/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:$PATH
 
 if [[ $- == *i* ]]
 then
@@ -8,9 +7,6 @@ then
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 export PS1="\[$(tput setaf 1)\]♦ \[$(tput setaf 2)\]\W \[$(tput setaf 4)\]/ \[$(tput setaf 3)\]➞ \[$(tput sgr0)\] "
-
-# Directory listing configuration
-# alias ls='ls -Gh'
 fi
 
 # LS Aliases
@@ -26,20 +22,12 @@ reload() {
 	command source ~/.bash_profile
 }
 
-# Sublime Text Path
-export EDITOR='sublime -w'
-
-# Python
-# alias env='deactivate &> /dev/null; source ./venv/bin/activate'
-# alias denv='deactivate'
-
-kills () {
-    for session in $(screen -ls | grep -o '[0-9]\{3,\}')
-    do
-        screen -S "${session}" -X quit;
-    done
-}
-
 editrc() {
 	sublime ~/.bash_profile
 }
+
+# Applications
+
+# Sublime Text Path
+export EDITOR='subl -w'
+alias sublime='subl -w'
